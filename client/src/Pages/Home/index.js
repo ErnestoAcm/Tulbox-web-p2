@@ -111,9 +111,9 @@ const Home = () => {
             <div className="col-md-9 productRow">
               <div className="d-flex align-items-center res-flex-column">
                 <div className="info" style={{ width: "35%" }}>
-                  <h3 className="mb-0 hd">Popular Products</h3>
+                  <h3 className="mb-0 hd">Productos populares</h3>
                   <p className="text-light text-sml mb-0">
-                    Do not miss the current offers until the end of March.
+                    No te pierdas las ofertas vigentes hasta finales de marzo.
                   </p>
                 </div>
 
@@ -173,9 +173,7 @@ const Home = () => {
                         ?.slice(0)
                         ?.reverse()
                         ?.map((item, index) => {
-                          return (
-                              <ProductItem item={item} key={index} />
-                          );
+                          return <ProductItem item={item} key={index} />;
                         })}
                   </div>
                 )}
@@ -197,9 +195,9 @@ const Home = () => {
 
               <div className="d-flex align-items-center mt-4">
                 <div className="info w-75">
-                  <h3 className="mb-0 hd">NEW PRODUCTS</h3>
+                  <h3 className="mb-0 hd">NUEVOS PRODUCTOS</h3>
                   <p className="text-light text-sml mb-0">
-                    New products with updated stocks.
+                    Nuevos productos con stocks actualizados.
                   </p>
                 </div>
               </div>
@@ -216,71 +214,65 @@ const Home = () => {
 
               <div className="d-flex align-items-center mt-4">
                 <div className="info">
-                  <h3 className="mb-0 hd">featured products</h3>
+                  <h3 className="mb-0 hd">productos destacados</h3>
                   <p className="text-light text-sml mb-0">
-                    Do not miss the current offers until the end of March.
+                    No te pierdas las ofertas vigentes hasta finales de
+                    Septiembre.
                   </p>
                 </div>
               </div>
 
               <div className="product_row w-100 mt-2">
-              {
-                context.windowWidth>992 ?
-                <Swiper
-                slidesPerView={4}
-                spaceBetween={0}
-                navigation={true}
-                slidesPerGroup={context.windowWidth > 992 ? 3 : 1}
-                modules={[Navigation]}
-                className="mySwiper"
-                breakpoints={{
-                  300: {
-                    slidesPerView: 1,
-                    spaceBetween: 5,
-                  },
-                  400: {
-                    slidesPerView: 2,
-                    spaceBetween: 5,
-                  },
-                  600: {
-                    slidesPerView: 3,
-                    spaceBetween: 5,
-                  },
-                  750: {
-                    slidesPerView: 4,
-                    spaceBetween: 5,
-                  },
-                }}
-              >
-                {featuredProducts?.length !== 0 &&
-                  featuredProducts
-                    ?.slice(0)
-                    ?.reverse()
-                    ?.map((item, index) => {
-                      return (
-                        <SwiperSlide key={index}>
-                          <ProductItem item={item} />
-                        </SwiperSlide>
-                      );
-                    })}
-              </Swiper>
-
-
-              :
-
-              <div className="productScroller">
-               {featuredProducts?.length !== 0 &&
-                  featuredProducts
-                    ?.slice(0)
-                    ?.reverse()
-                    ?.map((item, index) => {
-                      return (
-                          <ProductItem item={item} key={index} />
-                      );
-                    })}
-              </div>
-              }
-               
+                {context.windowWidth > 992 ? (
+                  <Swiper
+                    slidesPerView={4}
+                    spaceBetween={0}
+                    navigation={true}
+                    slidesPerGroup={context.windowWidth > 992 ? 3 : 1}
+                    modules={[Navigation]}
+                    className="mySwiper"
+                    breakpoints={{
+                      300: {
+                        slidesPerView: 1,
+                        spaceBetween: 5,
+                      },
+                      400: {
+                        slidesPerView: 2,
+                        spaceBetween: 5,
+                      },
+                      600: {
+                        slidesPerView: 3,
+                        spaceBetween: 5,
+                      },
+                      750: {
+                        slidesPerView: 4,
+                        spaceBetween: 5,
+                      },
+                    }}
+                  >
+                    {featuredProducts?.length !== 0 &&
+                      featuredProducts
+                        ?.slice(0)
+                        ?.reverse()
+                        ?.map((item, index) => {
+                          return (
+                            <SwiperSlide key={index}>
+                              <ProductItem item={item} />
+                            </SwiperSlide>
+                          );
+                        })}
+                  </Swiper>
+                ) : (
+                  <div className="productScroller">
+                    {featuredProducts?.length !== 0 &&
+                      featuredProducts
+                        ?.slice(0)
+                        ?.reverse()
+                        ?.map((item, index) => {
+                          return <ProductItem item={item} key={index} />;
+                        })}
+                  </div>
+                )}
               </div>
             </div>
           </div>

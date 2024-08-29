@@ -10,7 +10,6 @@ import MenuItem from "@mui/material/MenuItem";
 import { useContext, useEffect, useState } from "react";
 import ProductItem from "../../Components/ProductItem";
 
-
 import { useParams } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -26,7 +25,6 @@ const Listing = () => {
   const [filterId, setFilterId] = useState("");
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-
 
   const openDropdown = Boolean(anchorEl);
 
@@ -59,11 +57,10 @@ const Listing = () => {
     });
   }, [id]);
 
-
   const handleChangePage = (event, value) => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
     let url = window.location.href;
     let apiEndPoint = "";
@@ -84,9 +81,6 @@ const Listing = () => {
       setProductData(res);
       setisLoading(false);
     });
-
-
-
   };
 
   const filterData = (subCatId) => {
@@ -111,7 +105,6 @@ const Listing = () => {
     var window_url = window.location.href;
     var api_EndPoint = "";
 
-
     if (filterId === "") {
       if (window_url.includes("subCat")) {
         api_EndPoint = `/api/products/fiterByPrice?minPrice=${
@@ -133,9 +126,7 @@ const Listing = () => {
         price[0]
       }&maxPrice=${
         price[1]
-      }&subCatId=${filterId}&location=${localStorage.getItem(
-        "location"
-      )}`;
+      }&subCatId=${filterId}&location=${localStorage.getItem("location")}`;
     }
 
     setisLoading(true);
@@ -248,8 +239,6 @@ const Listing = () => {
                   </>
                 )}
               </div>
-              
-              
             </div>
           </div>
         </div>
@@ -265,7 +254,9 @@ const Listing = () => {
                   onClick={openFilters}
                 >
                   <FaFilter />
-                  {isOpenFilter === true ? "Close Filters" : "Open Filters"}
+                  {isOpenFilter === true
+                    ? "Cerrar filtros"
+                    : "Filtros abiertos"}
                 </Button>
               </div>
             </div>
