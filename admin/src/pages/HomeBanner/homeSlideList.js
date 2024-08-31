@@ -67,25 +67,24 @@ const HomeSlidesList = () => {
           context.setProgress({
             open: true,
             error: false,
-            msg: "Slide Deleted!",
+            msg: "Diapositiva eliminada!",
           });
         });
       });
+    } else {
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: "Solo el administrador puede eliminar la diapositiva",
+      });
     }
-    else {
-        context.setAlertBox({
-          open: true,
-          error: true,
-          msg: "Only admin can delete Slide",
-        });
-      }
   };
 
   return (
     <>
       <div className="right-content w-100">
         <div className="card shadow border-0 w-100 flex-row p-4 align-items-center">
-          <h5 className="mb-0">Home Banner Slide List</h5>
+          <h5 className="mb-0">Lista de Diapositivas del Banner de Inicio</h5>
 
           <div className="ml-auto d-flex align-items-center">
             <Breadcrumbs
@@ -95,19 +94,19 @@ const HomeSlidesList = () => {
               <StyledBreadcrumb
                 component="a"
                 href="#"
-                label="Dashboard"
+                label="Tablero"
                 icon={<HomeIcon fontSize="small" />}
               />
 
               <StyledBreadcrumb
-                label="Home Banner Slide"
+                label="Diapositiva del Banner de Inicio"
                 deleteIcon={<ExpandMoreIcon />}
               />
             </Breadcrumbs>
 
             <Link to="/homeBannerSlide/add">
               <Button className="btn-blue  ml-3 pl-3 pr-3">
-                Add Home Slide
+                Agregar Diapositiva de Inicio
               </Button>
             </Link>
           </div>
@@ -118,8 +117,8 @@ const HomeSlidesList = () => {
             <table className="table table-bordered table-striped v-align">
               <thead className="thead-dark">
                 <tr>
-                  <th style={{ width: "200px" }}>IMAGE</th>
-                  <th>ACTION</th>
+                  <th style={{ width: "200px" }}>IMAGEN</th>
+                  <th>ACCIÓN</th>
                 </tr>
               </thead>
 

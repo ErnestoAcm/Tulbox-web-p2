@@ -189,7 +189,7 @@ const Cart = () => {
                         : 0
                       )?.toLocaleString("es-MX", {
                         style: "currency",
-                        currency: "MX",
+                        currency: "MXN",
                       })}
                     </span>
                   </div>

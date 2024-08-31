@@ -197,13 +197,13 @@ const Checkout = () => {
         <form className="checkoutForm" onSubmit={checkout}>
           <div className="row">
             <div className="col-md-8">
-              <h2 className="hd">BILLING DETAILS</h2>
+              <h2 className="hd">DATOS DE FACTURACIÓN</h2>
 
               <div className="row mt-3">
                 <div className="col-md-6">
                   <div className="form-group">
                     <TextField
-                      label="Full Name *"
+                      label="Nombre completo *"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -216,7 +216,7 @@ const Checkout = () => {
                 <div className="col-md-6">
                   <div className="form-group">
                     <TextField
-                      label="Country *"
+                      label="Pais *"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -227,13 +227,13 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <h6>Street address *</h6>
+              <h6>Dirección *</h6>
 
               <div className="row">
                 <div className="col-md-12">
                   <div className="form-group">
                     <TextField
-                      label="House number and street name"
+                      label="Número de casa y nombre de la calle"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -244,7 +244,7 @@ const Checkout = () => {
 
                   <div className="form-group">
                     <TextField
-                      label="Apartment, suite, unit, etc. (optional)"
+                      label="Apartamento, suite, unidad, etc. (opcional)"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -255,13 +255,13 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <h6>Town / City *</h6>
+              <h6>Ciudad *</h6>
 
               <div className="row">
                 <div className="col-md-12">
                   <div className="form-group">
                     <TextField
-                      label="City"
+                      label="Ciudad"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -272,13 +272,13 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <h6>State / County *</h6>
+              <h6>Estado *</h6>
 
               <div className="row">
                 <div className="col-md-12">
                   <div className="form-group">
                     <TextField
-                      label="State"
+                      label="Estado"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -289,13 +289,13 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <h6>Postcode / ZIP *</h6>
+              <h6>Codigo postal *</h6>
 
               <div className="row">
                 <div className="col-md-12">
                   <div className="form-group">
                     <TextField
-                      label="ZIP Code"
+                      label="Codigo postal"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -310,7 +310,7 @@ const Checkout = () => {
                 <div className="col-md-6">
                   <div className="form-group">
                     <TextField
-                      label="Phone Number"
+                      label="Telefono"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -323,7 +323,7 @@ const Checkout = () => {
                 <div className="col-md-6">
                   <div className="form-group">
                     <TextField
-                      label="Email Address"
+                      label="Correo electronico"
                       variant="outlined"
                       className="w-100"
                       size="small"
@@ -337,12 +337,12 @@ const Checkout = () => {
 
             <div className="col-md-4">
               <div className="card orderInfo">
-                <h4 className="hd">YOUR ORDER</h4>
+                <h4 className="hd">TU ORDEN</h4>
                 <div className="table-responsive mt-3">
                   <table className="table table-borderless">
                     <thead>
                       <tr>
-                        <th>Product</th>
+                        <th>Producto</th>
                         <th>Subtotal</th>
                       </tr>
                     </thead>
@@ -358,9 +358,9 @@ const Checkout = () => {
                               </td>
 
                               <td>
-                                {item?.subTotal?.toLocaleString("en-US", {
+                                {item?.subTotal?.toLocaleString("es-MX", {
                                   style: "currency",
-                                  currency: "INR",
+                                  currency: "MXN",
                                 })}
                               </td>
                             </tr>
@@ -378,9 +378,9 @@ const Checkout = () => {
                                 )
                                 .reduce((total, value) => total + value, 0)
                             : 0
-                          )?.toLocaleString("en-US", {
+                          )?.toLocaleString("es-MX", {
                             style: "currency",
-                            currency: "INR",
+                            currency: "MXN",
                           })}
                         </td>
                       </tr>
@@ -392,7 +392,7 @@ const Checkout = () => {
                   type="submit"
                   className="btn-blue bg-red btn-lg btn-big"
                 >
-                  <IoBagCheckOutline /> &nbsp; Checkout
+                  <IoBagCheckOutline /> &nbsp; Confirmar
                 </Button>
               </div>
             </div>

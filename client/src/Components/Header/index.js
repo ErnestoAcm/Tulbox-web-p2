@@ -88,8 +88,7 @@ const Header = () => {
           <div className="top-strip bg-blue">
             <div className="container">
               <p className="mb-0 mt-0 text-center">
-                Due to the <b>COVID 19</b> epidemic, orders may be processed
-                with a slight delay
+                ya contamos con envios a todo mexico
               </p>
             </div>
           </div>
@@ -136,7 +135,7 @@ const Header = () => {
                     {context.isLogin !== true && context.windowWidth > 992 && (
                       <Link to="/signIn">
                         <Button className="btn-blue btn-round mr-3">
-                          Sign In
+                          Iniciar sesión
                         </Button>
                       </Link>
                     )}
@@ -166,7 +165,7 @@ const Header = () => {
                               <ListItemIcon>
                                 <FaUserAlt fontSize="small" />
                               </ListItemIcon>
-                              My Account
+                              Mi cuenta
                             </MenuItem>
                           </Link>
                           <Link to="/orders">
@@ -174,7 +173,7 @@ const Header = () => {
                               <ListItemIcon>
                                 <FaClipboardCheck fontSize="small" />
                               </ListItemIcon>
-                              Orders
+                              Ordenes
                             </MenuItem>
                           </Link>
                           <Link to="/my-list">
@@ -182,14 +181,14 @@ const Header = () => {
                               <ListItemIcon>
                                 <FaHeart fontSize="small" />
                               </ListItemIcon>
-                              My List
+                              Mi lista
                             </MenuItem>
                           </Link>
                           <MenuItem onClick={logout}>
                             <ListItemIcon>
                               <RiLogoutCircleRFill fontSize="small" />
                             </ListItemIcon>
-                            Logout
+                            Cerrar sesión
                           </MenuItem>
                         </Menu>
                       </>
@@ -205,9 +204,9 @@ const Header = () => {
                                 )
                                 .reduce((total, value) => total + value, 0)
                             : 0
-                          )?.toLocaleString("en-US", {
+                          )?.toLocaleString("es-MX", {
                             style: "currency",
-                            currency: "INR",
+                            currency: "MXN",
                           })}
                         </span>
                       )}

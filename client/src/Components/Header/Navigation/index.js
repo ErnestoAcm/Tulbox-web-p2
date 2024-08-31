@@ -37,7 +37,7 @@ const Navigation = (props) => {
                 <span className="icon1 mr-2">
                   <IoIosMenu />
                 </span>
-                <span className="text">ALL CATEGORIES</span>
+                <span className="text">CATEGORÍAS</span>
                 <span className="icon2  ml-2">
                   <FaAngleDown />
                 </span>
@@ -93,7 +93,7 @@ const Navigation = (props) => {
                     <li className="list-inline-item pl-3">
                       <Link to="/signIn">
                         <Button className="btn-blue btn-round mr-3">
-                          Sign In
+                          Iniciar sesión
                         </Button>
                       </Link>
                     </li>
@@ -109,7 +109,7 @@ const Navigation = (props) => {
               )}
               <li className="list-inline-item" onClick={props.closeNav}>
                 <Link to="/">
-                  <Button>Home</Button>
+                  <Button>Inicio</Button>
                 </Link>
               </li>
               {props.navData
@@ -126,13 +126,14 @@ const Navigation = (props) => {
 
                       {item?.children?.length !== 0 &&
                         context.windowWidth < 992 && (
-                          <span className={`arrow ${
-                                isOpenSubMenuIndex === index &&
-                                isOpenSubMenu_ === true &&
-                                "rotate"
-                              }`}
-                              onClick={() => IsOpenSubMenu(index)}
-                              >
+                          <span
+                            className={`arrow ${
+                              isOpenSubMenuIndex === index &&
+                              isOpenSubMenu_ === true &&
+                              "rotate"
+                            }`}
+                            onClick={() => IsOpenSubMenu(index)}
+                          >
                             <FaAngleDown />
                           </span>
                         )}

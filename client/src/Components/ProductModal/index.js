@@ -189,7 +189,7 @@ const ProductModal = (props) => {
 
             <span className="badge bg-success">EN STOCK</span>
 
-            <p className="mt-3">Rs: {props?.data?.description}</p>
+            <p className="mt-3">MXN: {props?.data?.description}</p>
 
             {props?.data?.productRam?.length !== 0 && (
               <div className="productSize d-flex align-items-center">

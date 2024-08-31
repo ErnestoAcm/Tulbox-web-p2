@@ -128,7 +128,7 @@ const ProductDetails = () => {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: "Please Login first",
+        msg: "Por favor, inicie sesión primero",
       });
     }
   };
@@ -184,7 +184,7 @@ const ProductDetails = () => {
           context.setAlertBox({
             open: true,
             error: false,
-            msg: "the product added in my list",
+            msg: "el producto añadido a mi lista",
           });
 
           fetchDataFromApi(
@@ -206,7 +206,7 @@ const ProductDetails = () => {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: "Please Login to continue",
+        msg: "Por favor, inicie sesión para continuar",
       });
     }
   };
@@ -254,9 +254,9 @@ const ProductDetails = () => {
               </ul>
 
               <div className="d-flex info mb-3">
-                <span className="oldPrice">Rs: {productData?.oldPrice}</span>
+                <span className="oldPrice">Mxn: {productData?.oldPrice}</span>
                 <span className="netPrice text-danger ml-2">
-                  Rs: {productData?.price}
+                  Mxn: {productData?.price}
                 </span>
               </div>
 
@@ -538,7 +538,7 @@ const ProductDetails = () => {
                 <div className="tabContent">
                   <div className="row">
                     <div className="col-md-8">
-                      <h3>Customer questions & answers</h3>
+                      <h3>Preguntas y respuestas de los clientes</h3>
                       <br />
 
                       {reviewsData?.length !== 0 &&
@@ -578,11 +578,11 @@ const ProductDetails = () => {
                       <br className="res-hide" />
 
                       <form className="reviewForm" onSubmit={addReview}>
-                        <h4>Add a review</h4>
+                        <h4>Agregar una reseña</h4>
                         <div className="form-group">
                           <textarea
                             className="form-control shadow"
-                            placeholder="Write a Review"
+                            placeholder="Escribir una reseña"
                             name="review"
                             value={reviews.review}
                             onChange={onChangeInput}
@@ -614,7 +614,7 @@ const ProductDetails = () => {
                                 className="loader"
                               />
                             ) : (
-                              "Submit Review"
+                              "Enviar reseña"
                             )}
                           </Button>
                         </div>
@@ -630,7 +630,7 @@ const ProductDetails = () => {
 
           {relatedProductData?.length !== 0 && (
             <RelatedProducts
-              title="RELATED PRODUCTS"
+              title="PRODUCTOS RELACIONADOS"
               data={relatedProductData}
             />
           )}

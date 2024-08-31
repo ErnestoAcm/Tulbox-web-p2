@@ -240,7 +240,7 @@ const SignIn = () => {
 
             <div className="d-flex align-items-center mt-3 mb-3 ">
               <Button type="submit" className="btn-blue col btn-lg btn-big">
-                {isLoading === true ? <CircularProgress /> : "Iniciar Sesión"}
+                {isLoading === true ? <CircularProgress /> : "Acceder"}
               </Button>
               <Link to="/">
                 {" "}
