@@ -154,7 +154,7 @@ const Checkout = () => {
       amount: parseInt(totalAmount * 100),
       currency: "MXN",
       order_receipt: "order_rcptid_" + formFields.fullName,
-      name: "E-Bharat",
+      name: "Tulbox",
       description: "for testing purpose",
       handler: function (response) {
         console.log(response);
