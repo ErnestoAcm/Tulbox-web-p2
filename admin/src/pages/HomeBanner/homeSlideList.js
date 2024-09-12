@@ -106,7 +106,7 @@ const HomeSlidesList = () => {
 
             <Link to="/homeBannerSlide/add">
               <Button className="btn-blue  ml-3 pl-3 pr-3">
-                Agregar Diapositiva de Inicio
+                Agregar Banner de Inicio
               </Button>
             </Link>
           </div>

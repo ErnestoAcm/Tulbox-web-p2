@@ -1,7 +1,7 @@
 const { Category } = require("../models/category.js");
 const { Product } = require("../models/products.js");
-const { MyList } = require('../models/myList');
-const { Cart } = require('../models/cart');
+const { MyList } = require("../models/myList");
+const { Cart } = require("../models/cart");
 const { RecentlyViewd } = require("../models/recentlyViewd.js");
 const { ImageUpload } = require("../models/imageUpload.js");
 const express = require("express");
@@ -49,8 +49,13 @@ router.post(`/upload`, upload.array("images"), async (req, res) => {
         req.files[i].path,
         options,
         function (error, result) {
-          imagesArr.push(result.secure_url);
-          fs.unlinkSync(`uploads/${req.files[i].filename}`);
+          if (result && result.secure_url) {
+            imagesArr.push(result.secure_url);
+            fs.unlinkSync(`uploads/${req.files[i].filename}`);
+          } else {
+            console.error("Error: secure_url is undefined in result", result);
+            // Manejar el error apropiadamente, por ejemplo, enviar una respuesta de error o reintentar la operación
+          }
         }
       );
     }
@@ -64,6 +69,7 @@ router.post(`/upload`, upload.array("images"), async (req, res) => {
     return res.status(200).json(imagesArr);
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ error: "Error al cargar imágenes" });
   }
 });
 
@@ -143,7 +149,6 @@ router.get(`/catId`, async (req, res) => {
 
   let productList = [];
 
-
   if (req.query.page !== "" && req.query.perPage !== "") {
     productList = await Product.find({
       location: req.query.location,
@@ -153,24 +158,22 @@ router.get(`/catId`, async (req, res) => {
       .skip((page - 1) * perPage)
       .limit(perPage)
       .exec();
-  
+
     return res.status(200).json({
       products: productList,
       totalPages: totalPages,
       page: page,
     });
+  } else {
+    productList = await Product.find({
+      location: req.query.location,
+      catId: req.query.catId,
+    });
+
+    return res.status(200).json({
+      products: productList,
+    });
   }
-else{
-  productList = await Product.find({
-    location: req.query.location,
-    catId: req.query.catId,
-  })
-
-  return res.status(200).json({
-    products: productList,
-  });
-}
-
 });
 
 router.get(`/subCatId`, async (req, res) => {
@@ -194,24 +197,22 @@ router.get(`/subCatId`, async (req, res) => {
       .skip((page - 1) * perPage)
       .limit(perPage)
       .exec();
-  
+
     return res.status(200).json({
       products: productList,
       totalPages: totalPages,
       page: page,
     });
-  }else{
+  } else {
     productList = await Product.find({
       location: req.query.location,
       subCatId: req.query.subCatId,
-    })
-  
+    });
+
     return res.status(200).json({
       products: productList,
     });
   }
-
- 
 });
 
 router.get(`/fiterByPrice`, async (req, res) => {
@@ -226,8 +227,6 @@ router.get(`/fiterByPrice`, async (req, res) => {
 
   let productList = [];
 
-
-
   if (req.query.catId !== "") {
     if (req.query.page !== "" && req.query.perPage !== "") {
       productList = await Product.find({
@@ -238,13 +237,12 @@ router.get(`/fiterByPrice`, async (req, res) => {
         .skip((page - 1) * perPage)
         .limit(perPage)
         .exec();
-    }else{
+    } else {
       productList = await Product.find({
         catId: req.query.catId,
         location: req.query.location,
-      })
+      });
     }
- 
   } else if (req.query.subCatId !== "") {
     if (req.query.page !== "" && req.query.perPage !== "") {
       productList = await Product.find({
@@ -255,13 +253,12 @@ router.get(`/fiterByPrice`, async (req, res) => {
         .skip((page - 1) * perPage)
         .limit(perPage)
         .exec();
-    }else{
+    } else {
       productList = await Product.find({
         subCatId: req.query.subCatId,
         location: req.query.location,
-      })
+      });
     }
-   
   }
 
   const filteredProducts = productList.filter((product) => {
@@ -304,14 +301,13 @@ router.get(`/rating`, async (req, res) => {
         .skip((page - 1) * perPage)
         .limit(perPage)
         .exec();
-    }else{
+    } else {
       productList = await Product.find({
         catId: req.query.catId,
         rating: req.query.rating,
         location: req.query.location,
-      })
+      });
     }
- 
   } else if (req.query.subCatId !== "") {
     if (req.query.page !== "" && req.query.perPage !== "") {
       productList = await Product.find({
@@ -323,14 +319,13 @@ router.get(`/rating`, async (req, res) => {
         .skip((page - 1) * perPage)
         .limit(perPage)
         .exec();
-    }else{
+    } else {
       productList = await Product.find({
         subCatId: req.query.subCatId,
         rating: req.query.rating,
         location: req.query.location,
-      })
+      });
     }
-   
   }
 
   return res.status(200).json({
@@ -533,16 +528,15 @@ router.delete("/:id", async (req, res) => {
 
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
 
-  const myListItems = await MyList.find({productId:req.params.id})
-  
-  for(var i=0; i<myListItems.length; i++){
+  const myListItems = await MyList.find({ productId: req.params.id });
+
+  for (var i = 0; i < myListItems.length; i++) {
     await MyList.findByIdAndDelete(myListItems[i].id);
   }
 
-  
-  const cartItems = await Cart.find({productId:req.params.id})
-  
-  for(var i=0; i<cartItems.length; i++){
+  const cartItems = await Cart.find({ productId: req.params.id });
+
+  for (var i = 0; i < cartItems.length; i++) {
     await Cart.findByIdAndDelete(cartItems[i].id);
   }
 

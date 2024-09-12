@@ -199,20 +199,20 @@ const Products = () => {
               <DashboardBox
                 color={["#1da256", "#48d483"]}
                 icon={<MdShoppingBag />}
-                title="Total Products"
+                title="Total de productos"
                 count={totalProducts}
                 grow={true}
               />
               <DashboardBox
                 color={["#c012e2", "#eb64fe"]}
                 icon={<MdCategory />}
-                title="Total Categories"
+                title="Categorías totales"
                 count={totalCategory}
               />
               <DashboardBox
                 color={["#2c78e5", "#60aff5"]}
                 icon={<IoShieldCheckmarkSharp />}
-                title="Total Subcategoría"
+                title="Subcategoría total"
                 count={totalSubCategory}
               />
             </div>
@@ -256,7 +256,7 @@ const Products = () => {
                   className="w-100"
                 >
                   <MenuItem value="all">
-                    <em value={"all"}>All</em>
+                    <em value={"all"}>Todo</em>
                   </MenuItem>
                   {context.catData?.categoryList?.length !== 0 &&
                     context.catData?.categoryList?.map((cat, index) => {

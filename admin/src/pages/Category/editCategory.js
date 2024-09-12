@@ -342,7 +342,7 @@ const EditCategory = () => {
                     {isLoading === true ? (
                       <CircularProgress color="inherit" className="loader" />
                     ) : (
-                      "PUBLISH AND VIEW"
+                      "PUBLICAR Y VER"
                     )}{" "}
                   </Button>
                 </div>
